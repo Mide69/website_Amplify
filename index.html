@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEK Tribe - Technology for Good</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.95), rgba(108, 117, 125, 0.95));
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: #00ff88;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #0d6efd;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0d6efd, #6c757d);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+            font-size: 8rem;
+            color: #0d6efd;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(13, 110, 253, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: #0d6efd;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Impact Section */
+        .impact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0d6efd, #6c757d);
+            color: white;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Forms Section */
+        .forms {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .forms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .form-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-card h3 {
+            color: #0d6efd;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0d6efd;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #212529, #343a40);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #00ff88;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #adb5bd;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00ff88;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                TEK Tribe
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#volunteer">Get Involved</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="#volunteer" class="btn btn-outline">
+                    <i class="fas fa-hands-helping"></i>
+                    Volunteer
+                </a>
+                <a href="#donate" class="btn btn-primary">
+                    <i class="fas fa-heart"></i>
+                    Donate
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Technology for Good</h1>
+            <p>Empowering communities through innovative cloud solutions, digital education, and sustainable technology practices.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Our Services
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    <i class="fas fa-info-circle"></i>
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About TEK Tribe</h2>
+                <p>We believe technology should be a force for good, driving positive social and environmental change.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p>At TEK Tribe, we are committed to using our IT cloud solutions expertise to drive positive social and environmental change. Our business operates with a strong community focus, ensuring that innovation serves not just profit, but people and the planet.</p>
+                    <p>As a CIC/CSR-driven business, we embed social impact into our core operations, creating a movement to make technology equitable, sustainable, and transformative for all.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Services</h2>
+                <p>Comprehensive cloud solutions designed to empower your organization while making a positive impact.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-cloud service-icon"></i>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable, secure cloud infrastructure tailored to your needs, with eco-friendly data centers and renewable energy priorities.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-shield-alt service-icon"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security solutions to protect your data and systems, including open-source tools for SMEs.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-graduation-cap service-icon"></i>
+                    <h3>Digital Training</h3>
+                    <p>Free digital skills training in cloud computing, cybersecurity, and IT infrastructure for communities in need.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-heart service-icon"></i>
+                    <h3>Non-Profit Support</h3>
+                    <p>Affordable and free cloud solutions for charities, non-profits, and educational institutions.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-leaf service-icon"></i>
+                    <h3>Green IT</h3>
+                    <p>Sustainable technology solutions with 100% carbon offset operations and eco-friendly practices.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-code-branch service-icon"></i>
+                    <h3>Open Source</h3>
+                    <p>Contributing to publicly accessible tech tools and open-source frameworks to democratize digital access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Community Impact</h2>
+                <p>Making a real difference through technology and community engagement.</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card fade-in">
+                    <div class="impact-number">10%</div>
+                    <p>of revenue supports free cloud solutions for UK non-profits</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-number">50%</div>
+                    <p>of hires from disadvantaged or diverse tech talent pools</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-number">100%</div>
+                    <p>carbon footprint offset with renewable energy partnerships</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-number">Monthly</div>
+                    <p>workshops for small businesses and job seekers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section id="volunteer" class="forms">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Get Involved</h2>
+                <p>Join our mission to make technology accessible and impactful for everyone.</p>
+            </div>
+            <div class="forms-grid">
+                <div class="form-card fade-in">
+                    <h3><i class="fas fa-hands-helping"></i> Volunteer Application</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="vol-name">Full Name</label>
+                            <input type="text" id="vol-name" name="vol-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-email">Email Address</label>
+                            <input type="email" id="vol-email" name="vol-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-phone">Phone Number</label>
+                            <input type="tel" id="vol-phone" name="vol-phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-skills">Skills & Expertise</label>
+                            <select id="vol-skills" name="vol-skills">
+                                <option value="">Select your area of expertise</option>
+                                <option value="cloud">Cloud Computing</option>
+                                <option value="security">Cybersecurity</option>
+                                <option value="training">Digital Training</option>
+                                <option value="development">Software Development</option>
+                                <option value="community">Community Outreach</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-availability">Availability</label>
+                            <textarea id="vol-availability" name="vol-availability" rows="3" placeholder="When are you available to volunteer?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Apply to Volunteer
+                        </button>
+                    </form>
+                </div>
+                <div class="form-card fade-in" id="donate">
+                    <h3><i class="fas fa-heart"></i> Support Our Mission</h3>
+                    <p>Your donation helps us provide free technology services to communities in need.</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="donation-amount">Donation Amount</label>
+                            <select id="donation-amount" name="donation-amount">
+                                <option value="">Select amount</option>
+                                <option value="25">£25 - Fund 1 training session</option>
+                                <option value="50">£50 - Support 1 small business</option>
+                                <option value="100">£100 - Sponsor cloud storage for 1 charity</option>
+                                <option value="250">£250 - Fund a community workshop</option>
+                                <option value="custom">Custom amount</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="donor-name">Full Name</label>
+                            <input type="text" id="donor-name" name="donor-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="donor-email">Email Address</label>
+                            <input type="email" id="donor-email" name="donor-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="donation-message">Message (Optional)</label>
+                            <textarea id="donation-message" name="donation-message" rows="3" placeholder="Share why you're supporting TEK Tribe..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-heart"></i>
+                            Donate Now
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TEK Tribe</h4>
+                    <p>Technology for good. Empowering communities through innovative cloud solutions and digital education.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Cloud Solutions</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                        <li><a href="#">Digital Training</a></li>
+                        <li><a href="#">Non-Profit Support</a></li>
+                        <li><a href="#">Green IT Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Volunteer Opportunities</a></li>
+                        <li><a href="#">Training Workshops</a></li>
+                        <li><a href="#">Open Source Projects</a></li>
+                        <li><a href="#">Impact Reports</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@tektribe.com.ng</li>
+                        <li><i class="fas fa-phone"></i> +44 7918599099</li>
+                        <li><i class="fas fa-phone"></i> +2347065260926</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Glasgow, UK</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TEK Tribe. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(13, 110, 253, 0.98), rgba(108, 117, 125, 0.98))';
+            } else {
+                header.style.background = 'linear-gradient(135deg, rgba(13, 110, 253, 0.95), rgba(108, 117, 125, 0.95))';
+            }
+        });
+
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Thank You!';
+                    submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        this.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        });
+
+        // Dynamic typing effect for hero subtitle
+        const heroSubtitle = document.querySelector('.hero p');
+        const originalText = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                heroSubtitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 30);
+            }
+        };
+        
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
