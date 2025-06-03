@@ -1,1 +1,1 @@
-# tektibe_weebsite_AwsAmplify
+# tektribe_weebsite_AwsAmplify
