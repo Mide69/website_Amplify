@@ -15,7 +15,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #081823;
             overflow-x: hidden;
         }
 
@@ -24,10 +24,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.95), rgba(108, 117, 125, 0.95));
+            background: linear-gradient(135deg, rgb(1, 24, 40), rgba(8, 26, 43, 0.95));
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 0.7rem 0;
             transition: all 0.3s ease;
         }
 
@@ -51,7 +51,7 @@
         }
 
         .logo i {
-            color: #00ff88;
+            color: #f6c661;
             animation: pulse 2s infinite;
         }
 
@@ -75,7 +75,7 @@
         }
 
         .nav-links a:hover {
-            color: #00ff88;
+            color: #f6c661;
             transform: translateY(-2px);
         }
 
@@ -86,7 +86,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #00ff88;
+            background: #f6c661;
             transition: width 0.3s ease;
         }
 
@@ -100,7 +100,7 @@
         }
 
         .btn {
-            padding: 0.8rem 1.5rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -114,14 +114,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            background: linear-gradient(135deg, #f6c661, #d49e27);
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 4px 15px rgba(245, 198, 95, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 8px 25px rgba(245, 198, 95, 0.4);
         }
 
         .btn-outline {
@@ -132,13 +132,13 @@
 
         .btn-outline:hover {
             background: white;
-            color: #0d6efd;
+            color: #0e2230;
             transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0d6efd, #6c757d);
+            background: linear-gradient(135deg, #081823, #000000);
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -153,7 +153,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background: url('TEK5.jpg') no-repeat center top;
+            background-size: cover;
+            opacity: 0.25;
             animation: float 20s ease-in-out infinite;
         }
 
@@ -173,7 +175,7 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #00ff88);
+            background: linear-gradient(135deg, #c38c14, #f5c65f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -227,34 +229,84 @@
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: #0d6efd;
+            color: #0e2230;
             margin-bottom: 1rem;
         }
 
         .section-title p {
             font-size: 1.2rem;
-            color: #6c757d;
+            color: #0e2230;
             max-width: 600px;
             margin: 0 auto;
         }
 
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 4rem;
             align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         .about-text {
-            font-size: 1.1rem;
+            flex: 1 1 350px;
+            font-size: 1.15rem;
             line-height: 1.8;
+            text-align: left;
+            color: #0e2230;
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 18px;
+            box-shadow: 0 6px 24px rgba(14,34,48,0.07);
+            margin-right: 0;
         }
 
         .about-image {
-            text-align: center;
-            font-size: 8rem;
-            color: #0d6efd;
-            opacity: 0.8;
+            flex: 1 1 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 280px;
+        }
+
+        .about-img-zoom {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(14,34,48,0.13);
+            transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s;
+        }
+
+        .about-img-zoom:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 16px 48px rgba(14,34,48,0.18);
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+            flex-direction: column-reverse;
+            gap: 2.5rem;
+            }
+            .about-text, .about-image {
+            margin-right: 0;
+            padding: 2rem 1rem;
+            }
+            .about-img-zoom {
+            max-width: 90vw;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about {
+            padding: 50px 0;
+            }
+            .about-text {
+            font-size: 1rem;
+            padding: 1.2rem 0.5rem;
+            }
+            .section-title h2 {
+            font-size: 2rem;
+            }
         }
 
         /* Services Section */
@@ -287,21 +339,21 @@
 
         .service-icon {
             font-size: 3rem;
-            color: #0d6efd;
+            color: #0e2230;
             margin-bottom: 1rem;
             display: block;
         }
 
         .service-card h3 {
-            color: #0d6efd;
+            color: #0e2230;
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
 
         /* Impact Section */
         .impact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #0d6efd, #6c757d);
+            padding: 50px 0;
+            background: linear-gradient(135deg, #0e2230, #122231);
             color: white;
         }
 
@@ -324,13 +376,13 @@
 
         .impact-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(208, 26, 26, 0);
         }
 
         .impact-number {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #00ff88;
+            color: #f5c65f;
             margin-bottom: 0.5rem;
         }
 
@@ -355,7 +407,7 @@
         }
 
         .form-card h3 {
-            color: #0d6efd;
+            color: #0e2230;
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
@@ -368,7 +420,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: #333;
+            color: #a14c4c;
         }
 
         .form-group input,
@@ -386,12 +438,12 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #0d6efd;
+            border-color: #0e2230;
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #212529, #343a40);
+            background: linear-gradient(135deg, #021425, #242b33);
             color: white;
             padding: 3rem 0 1rem;
         }
@@ -404,7 +456,7 @@
         }
 
         .footer-section h4 {
-            color: #00ff88;
+            color: #f5c65f;
             margin-bottom: 1rem;
             font-size: 1.2rem;
         }
@@ -418,13 +470,13 @@
         }
 
         .footer-section ul li a {
-            color: #adb5bd;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-section ul li a:hover {
-            color: #00ff88;
+            color: #f5c65f;
         }
 
         .social-links {
@@ -434,21 +486,21 @@
         }
 
         .social-links a {
-            color: #adb5bd;
+            color: #ffffff;
             font-size: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #00ff88;
+            color: #f5c65f;
             transform: translateY(-2px);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #495057;
-            color: #adb5bd;
+            border-top: 1px solid #d3d9de;
+            color: #ffffff;
         }
 
         /* Mobile Responsiveness */
@@ -504,8 +556,7 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                <i class="fas fa-code"></i>
-                TEK Tribe
+                <img src="logo.png" alt="TEK Tribe Logo" style="height:40px; width:auto; display:inline-block; vertical-align:middle;">
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -558,7 +609,7 @@
                     <p>As a CIC/CSR-driven business, we embed social impact into our core operations, creating a movement to make technology equitable, sustainable, and transformative for all.</p>
                 </div>
                 <div class="about-image fade-in">
-                    <i class="fas fa-globe-americas"></i>
+                    <img src="tekabout.jpg" alt="About TEK Tribe" class="about-img-zoom">
                 </div>
             </div>
         </div>
@@ -610,8 +661,8 @@
     <section id="impact" class="impact">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>Our Community Impact</h2>
-                <p>Making a real difference through technology and community engagement.</p>
+                <h2 style="color: #fff;">Our Community Impact</h2>
+                <p style="color: #fff;">Making a real difference through technology and community engagement.</p>
             </div>
             <div class="impact-grid">
                 <div class="impact-card fade-in">
@@ -687,10 +738,10 @@
                             <label for="donation-amount">Donation Amount</label>
                             <select id="donation-amount" name="donation-amount">
                                 <option value="">Select amount</option>
-                                <option value="25">£25 - Fund 1 training session</option>
-                                <option value="50">£50 - Support 1 small business</option>
-                                <option value="100">£100 - Sponsor cloud storage for 1 charity</option>
-                                <option value="250">£250 - Fund a community workshop</option>
+                                <option value="25">£5 - Fund 1 training session</option>
+                                <option value="50">£10 - Support 1 small business</option>
+                                <option value="100">£20 - Sponsor cloud storage for 1 charity</option>
+                                <option value="250">£50 - Fund a community workshop</option>
                                 <option value="custom">Custom amount</option>
                             </select>
                         </div>
@@ -724,10 +775,10 @@
                     <h4>TEK Tribe</h4>
                     <p>Technology for good. Empowering communities through innovative cloud solutions and digital education.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://youtube.com/@tek_tribe?si=ewDf_dCYx8RJFYkD"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/tektribe/about/?viewAsMember=true"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61577226638625"><i class="fab fa-facebook"></i></a>
+                        <a href="tek_tribe?igsh=N2NuNDRxYjF3ZXI5"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -753,7 +804,7 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> info@tektribe.com.ng</li>
+                        <li><i class="fas fa-envelope"></i> tektribe.uk@gmail.com</li>
                         <li><i class="fas fa-phone"></i> +44 7918599099</li>
                         <li><i class="fas fa-phone"></i> +2347065260926</li>
                         <li><i class="fas fa-map-marker-alt"></i> Glasgow, UK</li>
@@ -803,9 +854,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, rgba(13, 110, 253, 0.98), rgba(108, 117, 125, 0.98))';
+                header.style.background = 'linear-gradient(135deg, rgba(14, 34, 48, 0.98), rgba(108, 117, 125, 0.98))';
             } else {
-                header.style.background = 'linear-gradient(135deg, rgba(13, 110, 253, 0.95), rgba(108, 117, 125, 0.95))';
+                header.style.background = 'linear-gradient(135deg, rgba(14, 34, 48), rgba(108, 117, 125, 0.95))';
             }
         });
 
