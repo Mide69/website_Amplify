@@ -934,48 +934,66 @@
     
     <script>
         // Stripe Configuration
-        const stripe = Stripe('pk_test_51ReMXQR9IyqUAbL60vAJj8AqClJdFHY1GnzrcNOsP4NOvoKL7F4XfGgwjudCMaH3gCZRWuJdaqoKeSBBHjPLPtKJ00UeGYAKLl');
-        const elements = stripe.elements();
+        // Get Stripe publishable key from server
+        let stripe;
+        fetch('/api/stripe-config')
+            .then(response => response.json())
+            .then(config => {
+                stripe = Stripe(config.publishableKey);
+                initializeStripe();
+            })
+            .catch(error => {
+                console.error('Error loading Stripe config:', error);
+            });
         
-        // Create card element
-        const cardElement = elements.create('card', {
-            style: {
-                base: {
-                    fontSize: '16px',
-                    color: '#424770',
-                    '::placeholder': {
-                        color: '#aab7c4',
+        function initializeStripe() {
+            const elements = stripe.elements();
+        
+            // Create card element
+            const cardElement = elements.create('card', {
+                style: {
+                    base: {
+                        fontSize: '16px',
+                        color: '#424770',
+                        '::placeholder': {
+                            color: '#aab7c4',
+                        },
                     },
                 },
-            },
-        });
+            });
+            
+            cardElement.mount('#card-element');
+            
+            // Handle real-time validation errors from the card Element
+            cardElement.on('change', ({error}) => {
+                const displayError = document.getElementById('card-errors');
+                if (error) {
+                    displayError.textContent = error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+            
+            // Setup donation form handler
+            setupDonationForm(stripe, cardElement);
+        }
         
-        cardElement.mount('#card-element');
+        function setupDonationForm(stripe, cardElement) {
         
-        // Handle real-time validation errors from the card Element
-        cardElement.on('change', ({error}) => {
-            const displayError = document.getElementById('card-errors');
-            if (error) {
-                displayError.textContent = error.message;
-            } else {
-                displayError.textContent = '';
-            }
-        });
-        
-        // Handle donation amount selection
-        document.getElementById('donation-amount').addEventListener('change', function() {
-            const customGroup = document.getElementById('custom-amount-group');
-            if (this.value === 'custom') {
-                customGroup.style.display = 'block';
-                document.getElementById('custom-amount').required = true;
-            } else {
-                customGroup.style.display = 'none';
-                document.getElementById('custom-amount').required = false;
-            }
-        });
-        
-        // Handle form submission
-        document.getElementById('donation-form').addEventListener('submit', async function(event) {
+            // Handle donation amount selection
+            document.getElementById('donation-amount').addEventListener('change', function() {
+                const customGroup = document.getElementById('custom-amount-group');
+                if (this.value === 'custom') {
+                    customGroup.style.display = 'block';
+                    document.getElementById('custom-amount').required = true;
+                } else {
+                    customGroup.style.display = 'none';
+                    document.getElementById('custom-amount').required = false;
+                }
+            });
+            
+            // Handle form submission
+            document.getElementById('donation-form').addEventListener('submit', async function(event) {
             event.preventDefault();
             
             const submitButton = document.getElementById('donate-button');
@@ -1075,13 +1093,14 @@
                 document.getElementById('card-errors').textContent = 'An error occurred. Please try again.';
             }
             
-            // Re-enable form if there was an error
-            if (submitButton.disabled) {
-                form.classList.remove('processing');
-                submitButton.disabled = false;
-                buttonText.innerHTML = '<i class="fas fa-heart"></i> Donate Now';
-            }
-        });
+                // Re-enable form if there was an error
+                if (submitButton.disabled) {
+                    form.classList.remove('processing');
+                    submitButton.disabled = false;
+                    buttonText.innerHTML = '<i class="fas fa-heart"></i> Donate Now';
+                }
+            });
+        }
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

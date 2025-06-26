@@ -50,6 +50,13 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Stripe config endpoint (only publishable key)
+app.get('/api/stripe-config', (req, res) => {
+    res.json({
+        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
+    });
+});
+
 // Volunteer form submission
 app.post('/api/volunteer', async (req, res) => {
     try {
