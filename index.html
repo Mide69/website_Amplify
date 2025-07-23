@@ -790,22 +790,22 @@
             <div class="forms-grid">
                 <div class="form-card fade-in">
                     <h3><i class="fas fa-hands-helping"></i> Volunteer Application</h3>
-                    <form>
+                    <form id="volunteer-form" method="post" target="_blank">
                         <div class="form-group">
                             <label for="vol-name">Full Name</label>
-                            <input type="text" id="vol-name" name="vol-name" required>
+                            <input type="text" id="vol-name" name="entry.1234567890" required>
                         </div>
                         <div class="form-group">
                             <label for="vol-email">Email Address</label>
-                            <input type="email" id="vol-email" name="vol-email" required>
+                            <input type="email" id="vol-email" name="entry.1234567891" required>
                         </div>
                         <div class="form-group">
                             <label for="vol-phone">Phone Number</label>
-                            <input type="tel" id="vol-phone" name="vol-phone">
+                            <input type="tel" id="vol-phone" name="entry.1234567892">
                         </div>
                         <div class="form-group">
                             <label for="vol-skills">Skills & Expertise</label>
-                            <select id="vol-skills" name="vol-skills">
+                            <select id="vol-skills" name="entry.1234567893">
                                 <option value="">Select your area of expertise</option>
                                 <option value="cloud">Cloud Computing</option>
                                 <option value="security">Cybersecurity</option>
@@ -817,9 +817,12 @@
                         </div>
                         <div class="form-group">
                             <label for="vol-availability">Availability</label>
-                            <textarea id="vol-availability" name="vol-availability" rows="3" placeholder="When are you available to volunteer?"></textarea>
+                            <textarea id="vol-availability" name="entry.1234567894" rows="3" placeholder="When are you available to volunteer?"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <div id="volunteer-success" style="display:none; color:#28a745; margin-bottom:15px;">
+                            <i class="fas fa-check-circle"></i> Thank you for your application! We'll be in touch soon.
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="volunteer-submit">
                             <i class="fas fa-paper-plane"></i>
                             Apply to Volunteer
                         </button>
@@ -956,9 +959,54 @@
             }
         });
 
-        // Form submission handling
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
+        // Google Sheets form submission
+        const volunteerForm = document.getElementById('volunteer-form');
+        if (volunteerForm) {
+            // Set the Google Form action URL
+            volunteerForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLSdQVMt6-rGVaABMIKj3GWYmhBdNwPYXO9HT9-LD9CXuPYHDmw/formResponse';
+            
+            volunteerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitBtn = document.getElementById('volunteer-submit');
+                const successMsg = document.getElementById('volunteer-success');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.disabled = true;
+                
+                // Submit form data to Google Sheets
+                const formData = new FormData(volunteerForm);
+                fetch(volunteerForm.action, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Forms
+                    body: formData
+                })
+                .then(() => {
+                    // Show success message
+                    successMsg.style.display = 'block';
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Submitted!';
+                    submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                    volunteerForm.reset();
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+        
+        // Handle donation form submission
+        const donationForm = document.querySelector('#donate form');
+        if (donationForm) {
+            donationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
@@ -979,7 +1027,7 @@
                     }, 2000);
                 }, 1500);
             });
-        });
+        }
 
         // Dynamic typing effect for hero subtitle
         const heroSubtitle = document.querySelector('.hero p');
