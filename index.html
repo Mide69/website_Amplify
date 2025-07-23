@@ -790,34 +790,34 @@
             <div class="forms-grid">
                 <div class="form-card fade-in">
                     <h3><i class="fas fa-hands-helping"></i> Volunteer Application</h3>
-                    <form id="volunteer-form" method="post" target="_blank" action="https://docs.google.com/forms/d/e/1FAIpQLSdQVMt6-rGVaABMIKj3GWYmhBdNwPYXO9HT9-LD9CXuPYHDmw/formResponse">
+                    <form id="volunteer-form" method="post" target="_blank" action="https://docs.google.com/forms/d/e/1FAIpQLSfomHokQOTt9qQAD4GICSeuHuwd5fYc1dyk3z1zEXee1F1pbA/formResponse">
                         <div class="form-group">
                             <label for="vol-name">Full Name</label>
-                            <input type="text" id="vol-name" name="entry.1000000" required>
+                            <input type="text" id="vol-name" name="entry.1777379226" required>
                         </div>
                         <div class="form-group">
                             <label for="vol-email">Email Address</label>
-                            <input type="email" id="vol-email" name="entry.1000001" required>
+                            <input type="email" id="vol-email" name="entry.1045781291" required>
                         </div>
                         <div class="form-group">
                             <label for="vol-phone">Phone Number</label>
-                            <input type="tel" id="vol-phone" name="entry.1000002">
+                            <input type="tel" id="vol-phone" name="entry.1166974658">
                         </div>
                         <div class="form-group">
                             <label for="vol-skills">Skills & Expertise</label>
-                            <select id="vol-skills" name="entry.1000003">
+                            <select id="vol-skills" name="entry.1065046570">
                                 <option value="">Select your area of expertise</option>
-                                <option value="cloud">Cloud Computing</option>
-                                <option value="security">Cybersecurity</option>
-                                <option value="training">Digital Training</option>
-                                <option value="development">Software Development</option>
-                                <option value="community">Community Outreach</option>
-                                <option value="other">Other</option>
+                                <option value="Cloud Computing">Cloud Computing</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                                <option value="Digital Training">Digital Training</option>
+                                <option value="Software Development">Software Development</option>
+                                <option value="Community Outreach">Community Outreach</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="vol-availability">Availability</label>
-                            <textarea id="vol-availability" name="entry.1000004" rows="3" placeholder="When are you available to volunteer?"></textarea>
+                            <textarea id="vol-availability" name="entry.839337160" rows="3" placeholder="When are you available to volunteer?"></textarea>
                         </div>
                         <div id="volunteer-success" style="display:none; color:#28a745; margin-bottom:15px;">
                             <i class="fas fa-check-circle"></i> Thank you for your application! We'll be in touch soon.
@@ -965,6 +965,7 @@
             // Create hidden iframe for form submission
             const iframe = document.createElement('iframe');
             iframe.name = 'hidden-iframe';
+            iframe.id = 'hidden-iframe';
             iframe.style.display = 'none';
             document.body.appendChild(iframe);
             
@@ -981,18 +982,22 @@
                 submitBtn.disabled = true;
                 
                 // Handle form submission completion
-                iframe.onload = function() {
+                document.getElementById('hidden-iframe').onload = function() {
                     // Show success message
                     successMsg.style.display = 'block';
                     submitBtn.innerHTML = '<i class="fas fa-check"></i> Submitted!';
                     submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
                     
-                    // Reset button after delay
+                    // Reset form and button after delay
                     setTimeout(() => {
                         volunteerForm.reset();
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
                         submitBtn.style.background = '';
+                        // Hide success message after a bit longer
+                        setTimeout(() => {
+                            successMsg.style.display = 'none';
+                        }, 2000);
                     }, 3000);
                 };
             });
