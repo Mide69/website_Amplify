@@ -790,22 +790,22 @@
             <div class="forms-grid">
                 <div class="form-card fade-in">
                     <h3><i class="fas fa-hands-helping"></i> Volunteer Application</h3>
-                    <form id="volunteer-form" method="post" target="_blank">
+                    <form id="volunteer-form" method="post" target="_blank" action="https://docs.google.com/forms/d/e/1FAIpQLSdQVMt6-rGVaABMIKj3GWYmhBdNwPYXO9HT9-LD9CXuPYHDmw/formResponse">
                         <div class="form-group">
                             <label for="vol-name">Full Name</label>
-                            <input type="text" id="vol-name" name="entry.1234567890" required>
+                            <input type="text" id="vol-name" name="entry.1000000" required>
                         </div>
                         <div class="form-group">
                             <label for="vol-email">Email Address</label>
-                            <input type="email" id="vol-email" name="entry.1234567891" required>
+                            <input type="email" id="vol-email" name="entry.1000001" required>
                         </div>
                         <div class="form-group">
                             <label for="vol-phone">Phone Number</label>
-                            <input type="tel" id="vol-phone" name="entry.1234567892">
+                            <input type="tel" id="vol-phone" name="entry.1000002">
                         </div>
                         <div class="form-group">
                             <label for="vol-skills">Skills & Expertise</label>
-                            <select id="vol-skills" name="entry.1234567893">
+                            <select id="vol-skills" name="entry.1000003">
                                 <option value="">Select your area of expertise</option>
                                 <option value="cloud">Cloud Computing</option>
                                 <option value="security">Cybersecurity</option>
@@ -817,7 +817,7 @@
                         </div>
                         <div class="form-group">
                             <label for="vol-availability">Availability</label>
-                            <textarea id="vol-availability" name="entry.1234567894" rows="3" placeholder="When are you available to volunteer?"></textarea>
+                            <textarea id="vol-availability" name="entry.1000004" rows="3" placeholder="When are you available to volunteer?"></textarea>
                         </div>
                         <div id="volunteer-success" style="display:none; color:#28a745; margin-bottom:15px;">
                             <i class="fas fa-check-circle"></i> Thank you for your application! We'll be in touch soon.
@@ -959,14 +959,20 @@
             }
         });
 
-        // Google Sheets form submission
+        // Google Forms submission
         const volunteerForm = document.getElementById('volunteer-form');
         if (volunteerForm) {
-            // Set the Google Form action URL
-            volunteerForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLSdQVMt6-rGVaABMIKj3GWYmhBdNwPYXO9HT9-LD9CXuPYHDmw/formResponse';
+            // Create hidden iframe for form submission
+            const iframe = document.createElement('iframe');
+            iframe.name = 'hidden-iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            // Set form target to hidden iframe
+            volunteerForm.target = 'hidden-iframe';
             
             volunteerForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+                // Don't prevent default - let the form submit to iframe
                 const submitBtn = document.getElementById('volunteer-submit');
                 const successMsg = document.getElementById('volunteer-success');
                 const originalText = submitBtn.innerHTML;
@@ -974,32 +980,21 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
                 submitBtn.disabled = true;
                 
-                // Submit form data to Google Sheets
-                const formData = new FormData(volunteerForm);
-                fetch(volunteerForm.action, {
-                    method: 'POST',
-                    mode: 'no-cors', // Required for Google Forms
-                    body: formData
-                })
-                .then(() => {
+                // Handle form submission completion
+                iframe.onload = function() {
                     // Show success message
                     successMsg.style.display = 'block';
                     submitBtn.innerHTML = '<i class="fas fa-check"></i> Submitted!';
                     submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-                    volunteerForm.reset();
                     
                     // Reset button after delay
                     setTimeout(() => {
+                        volunteerForm.reset();
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
                         submitBtn.style.background = '';
                     }, 3000);
-                })
-                .catch(error => {
-                    console.error('Error submitting form:', error);
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                });
+                };
             });
         }
         
