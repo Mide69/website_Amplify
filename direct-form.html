@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEK Tribe Direct Form Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .success {
+            color: green;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>TEK Tribe Volunteer Form</h1>
+    <p>This is a direct submission test to Google Forms.</p>
+    
+    <form id="volunteer-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfomHokQOTt9qQAD4GICSeuHuwd5fYc1dyk3z1zEXee1F1pbA/formResponse" method="post" target="_blank">
+        <div class="form-group">
+            <label for="vol-name">Full Name</label>
+            <input type="text" id="vol-name" name="entry.1777379226" required>
+        </div>
+        <div class="form-group">
+            <label for="vol-email">Email Address</label>
+            <input type="email" id="vol-email" name="entry.1045781291" required>
+        </div>
+        <div class="form-group">
+            <label for="vol-phone">Phone Number</label>
+            <input type="tel" id="vol-phone" name="entry.1166974658">
+        </div>
+        <div class="form-group">
+            <label for="vol-skills">Skills & Expertise</label>
+            <select id="vol-skills" name="entry.1065046570">
+                <option value="">Select your area of expertise</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Digital Training">Digital Training</option>
+                <option value="Software Development">Software Development</option>
+                <option value="Community Outreach">Community Outreach</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="vol-availability">Availability</label>
+            <textarea id="vol-availability" name="entry.839337160" rows="3" placeholder="When are you available to volunteer?"></textarea>
+        </div>
+        <button type="submit">Submit Application</button>
+    </form>
+    
+    <div id="success-message" class="success">
+        Form submitted successfully! Check your spreadsheet for the data.
+    </div>
+    
+    <script>
+        document.getElementById('volunteer-form').addEventListener('submit', function() {
+            setTimeout(function() {
+                document.getElementById('success-message').style.display = 'block';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
