@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap locations
+Sitemap: https://www.tektribe.com.ng/sitemap.xml
 Sitemap: https://www.tektribe.org.uk/sitemap.xml
 
 # Crawl delay (optional - helps with server load)
