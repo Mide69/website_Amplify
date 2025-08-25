@@ -245,30 +245,30 @@
             "items": [
                 {
                     "id": 1,
-                    "title": "Cloud Solutions",
-                    "description": "We design, implement, and optimise secure, scalable cloud environments. From migration to ongoing management, we help you harness the power of cloud technology to improve efficiency, cut costs, and future-proof your operations.",
+                    "title": "Cloud and IT Innovative Solutions",
+                    "description": "We design, implement, and optimise cutting-edge cloud environments and innovative IT solutions. From seamless migration to advanced automation, we help you harness next-generation technology to transform operations, reduce costs, and accelerate digital innovation.",
                     "icon": "Cloud",
                     "path": "#!"
                 },
                 {
                     "id": 2,
-                    "title": "IT Audit and Cybersecurity",
-                    "description": "We provide expert advice and hands-on solutions to protect your data, systems, and networks. From security assessments to implementing best-in-class protections, we ensure your digital environment stays safe against evolving threats.",
+                    "title": "Cybersecurity, Audit and Consultancy",
+                    "description": "We provide comprehensive cybersecurity solutions, thorough IT audits, and strategic consultancy services. From vulnerability assessments to compliance frameworks and security implementation, we ensure your digital infrastructure is secure, compliant, and resilient against evolving threats.",
                     "icon": "Shield",
                     "path": "#!"
                 },
                 {
                     "id": 3,
-                    "title": "IT Support and Consultancy",
-                    "description": "Whether you need day-to-day troubleshooting, strategic IT planning, or infrastructure upgrades, our team delivers reliable support and tailored consultancy to keep your technology running smoothly.",
-                    "icon": "Tool",
+                    "title": "Community Training and Workshops",
+                    "description": "We deliver targeted training programs specifically designed for vulnerable and underrepresented members of our community. Our inclusive workshops focus on digital skills, career development, and technology access to bridge the digital divide and create pathways to economic empowerment.",
+                    "icon": "Users",
                     "path": "#!"
                 },
                 {
                     "id": 4,
-                    "title": "Community Training and Workshops",
-                    "description": "We run accessible training programs and community-driven tech initiatives aimed at closing the digital skills gap. Our projects give people the tools they need to succeed in work, education, and everyday life.",
-                    "icon": "Users",
+                    "title": "Green IT",
+                    "description": "Sustainable technology solutions with 100% carbon offset operations and eco-friendly practices. We help organizations reduce their environmental impact through energy-efficient infrastructure, sustainable cloud solutions, and green technology strategies.",
+                    "icon": "Leaf",
                     "path": "#!"
                 },
                 {
