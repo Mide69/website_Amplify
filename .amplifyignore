@@ -1,0 +1,27 @@
+# Development files
+.git/
+node_modules/
+.cache/
+coverage/
+.nyc_output/
+*.log
+.env.local
+.env.development
+.env.test
+
+# Documentation and non-essential files
+docs/
+*.md
+LICENSE
+CHANGELOG
+.github/
+.vscode/
+.idea/
+
+# Test files
+**/*.test.*
+**/*.spec.*
+test/
+tests/
+__tests__/
+cypress/
