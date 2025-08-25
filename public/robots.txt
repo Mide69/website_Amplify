@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tektribe.org.uk/sitemap.xml
+# Sitemap locations
+Sitemap: https://www.tektribe.org.uk/sitemap.xml
+Sitemap: https://www.tektribe.com.ng/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

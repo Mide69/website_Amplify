@@ -2,10 +2,10 @@ export default function manifest() {
   return {
     name: 'TEK Tribe - Technology for Social Good',
     short_name: 'TEK Tribe',
-    description: 'Empowering communities through innovative cloud solutions and digital education',
+    description: 'Empowering communities through IT solutions, digital training, and sustainable technology in Glasgow, UK.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#1e2024',
+    background_color: '#ffffff',
     theme_color: '#ff014f',
     icons: [
       {
@@ -13,6 +13,18 @@ export default function manifest() {
         sizes: 'any',
         type: 'image/x-icon',
       },
+      {
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
     ],
+    categories: ['business', 'education', 'productivity'],
+    lang: 'en-GB',
   }
 }
