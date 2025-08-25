@@ -1,3 +1,1 @@
-# tektribe_weebsite_AwsAmplify
-
-This is an update
+# tek_tribe

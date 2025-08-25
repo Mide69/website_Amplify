@@ -1,0 +1,133 @@
+.modern-footer {
+    background-color: var(--color-light);
+    color: var(--color-heading);
+    
+    .footer-content {
+        padding: 60px 0 40px;
+    }
+    
+    .footer-title {
+        color: var(--color-primary);
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    
+    .footer-description, .footer-list li, .contact-info p {
+        color: var(--color-body);
+        font-size: 14px;
+    }
+    
+    .footer-description {
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .footer-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+            padding: 5px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            
+            &:hover {
+                color: var(--color-primary);
+            }
+        }
+    }
+    
+    .contact-info p {
+        margin-bottom: 8px;
+    }
+    
+    .social-links {
+        margin-top: 25px;
+        
+        .social-share-inner {
+            display: flex;
+            gap: 25px;
+            
+            .social-share-element {
+                a {
+                    color: var(--color-white);
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                    font-size: 18px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    
+                    &:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                    }
+                    
+                    // Instagram gradient
+                    &[href*="instagram"] {
+                        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+                        
+                        &:hover {
+                            background: linear-gradient(45deg, #e6683c 0%, #dc2743 25%, #cc2366 50%, #bc1888 75%, #8b0a6b 100%);
+                        }
+                    }
+                    
+                    // LinkedIn blue
+                    &[href*="linkedin"] {
+                        background-color: #0077b5;
+                        
+                        &:hover {
+                            background-color: #005885;
+                        }
+                    }
+                    
+                    // YouTube red
+                    &[href*="youtube"] {
+                        background-color: #ff0000;
+                        
+                        &:hover {
+                            background-color: #cc0000;
+                        }
+                    }
+                    
+                    // Facebook blue
+                    &[href*="facebook"] {
+                        background-color: #1877f2;
+                        
+                        &:hover {
+                            background-color: #166fe5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .footer-bottom {
+        background-color: var(--color-white);
+        padding: 20px 0;
+        border-top: 1px solid var(--color-border);
+        
+        .copyright-text {
+            color: var(--color-body);
+            margin: 0;
+            font-size: 14px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .footer-content {
+            padding: 40px 0 20px;
+        }
+        
+        .col-md-6 {
+            margin-bottom: 30px;
+        }
+    }
+}

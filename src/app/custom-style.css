@@ -1,0 +1,30 @@
+  .white-version .client-card .main-content .thumbnail a img, .white-version .brand-wrapper-three .rn-brand .thumbnail img {
+    filter: none;
+}
+
+/* Service icons styling - green fill and bold */
+.rn-service .icon svg {
+    fill: #28a745 !important;
+    stroke: #28a745 !important;
+    stroke-width: 2.5 !important;
+    font-weight: bold !important;
+}
+
+/* Hero section text styling - white color */
+.rn-banner-area .inner h1.title,
+.rn-banner-area .inner .description {
+    color: white !important;
+}
+/* Force hero section description text to white */
+.rn-banner-area .inner .description,
+.rn-banner-area .inner p,
+.rn-banner-area .banner-content .description,
+.rn-banner-area .banner-content p {
+    color: white !important;
+}
+/* Service icons hover effect - change to white */
+.rn-service:hover .icon svg {
+    fill: white !important;
+    stroke: white !important;
+    transition: all 0.3s ease;
+}

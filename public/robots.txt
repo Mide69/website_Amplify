@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tektribe.org.uk/sitemap.xml
