@@ -1,4 +1,6 @@
 import { Inter } from "next/font/google";
+import Analytics from "../components/analytics";
+import CookieBanner from "../components/ui/cookie-banner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -83,7 +85,11 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
-      <body className={"white-version"}>{children}</body>
+      <body className={"white-version"}>
+        {children}
+        <Analytics />
+        <CookieBanner />
+      </body>
     </html>
   );
 }

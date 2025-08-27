@@ -1,0 +1,21 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Crawl-delay: 1
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+User-Agent: Bingbot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+Host: https://www.tektribe.org.uk
+Sitemap: https://www.tektribe.org.uk/sitemap.xml
+Sitemap: https://www.tektribe.com.ng/sitemap.xml
