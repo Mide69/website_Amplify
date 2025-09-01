@@ -402,7 +402,7 @@
             "items": [
                 {
                     "id": 1,
-                    "title": "DWP",
+                    "title": "Department for Work and Pensions",
                     "images": [
                         {
                             "src": "https://res.cloudinary.com/faksam-soft/image/upload/v1754138504/tektribe/sample_portfolio_s166uu.jpg"
@@ -740,8 +740,9 @@
             "id": "tek-tribe-home-blog",
             "section": "blog-section",
             "section_title": {
-                "title": "Our Blog",
-                "subtitle": "Read about trending issues"
+                "title": "Insights & Innovation",
+                "subtitle": "Latest Insights",
+                "description": "Explore cutting-edge technology trends, practical guides, and success stories from our community programs. Stay informed with expert insights on digital transformation, cybersecurity, and sustainable technology solutions."
             },
             "items": [
                 {
