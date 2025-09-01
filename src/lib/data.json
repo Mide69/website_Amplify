@@ -695,7 +695,7 @@
                         "frequency": ["One-time", "Monthly"],
                         "fields": ["Full Name", "Email", "Phone", "Message"]
                     },
-                    "orderLink": "#donate-money",
+                    "orderLink": "https://donate.stripe.com/9B6fZibUj95g9CpdZp5Rm00",
                     "button_text": "Donate Now"
                 },
                 {
