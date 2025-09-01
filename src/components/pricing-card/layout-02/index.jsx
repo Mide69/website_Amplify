@@ -24,9 +24,39 @@ const PricingCard = ({ title, subtitle, price, orderLink, features, button_text 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Material donation submitted:', formData);
-        alert('Thank you! We will contact you about your material donation.');
+        
+        const emailData = {
+            to: 'info@tektribe.org.uk',
+            subject: 'Material Donation Submission',
+            html: `
+                <h3>New Material Donation Submission</h3>
+                <p><strong>Item Type:</strong> ${formData.itemType}</p>
+                <p><strong>Description:</strong> ${formData.description}</p>
+                <p><strong>Quantity:</strong> ${formData.quantity}</p>
+                <p><strong>Donor Name:</strong> ${formData.name}</p>
+                <p><strong>Email:</strong> ${formData.email}</p>
+                <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+            `
+        };
+        
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(emailData)
+            });
+            
+            if (response.ok) {
+                alert('Thank you for your generous donation offer! You will hear from us soon.');
+            } else {
+                alert('Thank you for your interest! Please email us directly at info@tektribe.org.uk');
+            }
+        } catch (error) {
+            alert('Thank you for your donation offer! Please contact us at info@tektribe.org.uk to complete the process.');
+        }
+        
         setShowForm(false);
+        setFormData({ itemType: '', description: '', quantity: '', name: '', email: '' });
     };
 
     const handleDonateClick = () => {
