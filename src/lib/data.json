@@ -664,39 +664,39 @@
             "inner": [
                 {
                     "id": "monetary-donation",
-                    "title": "MONETARY DONATION",
-                    "subtitle": "Support Our Digital Mission",
-                    "is_featured": false,
-                    "price": "Custom Amount",
+                    "title": "SUPPORT OUR MISSION",
+                    "subtitle": "Make a Secure Donation Today",
+                    "is_featured": true,
+                    "price": "Any Amount",
                     "items": [
                         {
                             "id": 1,
-                            "title": "One-time or monthly donations",
+                            "title": "Secure Stripe payment processing",
                             "available": true
                         },
                         {
                             "id": 2,
-                            "title": "Secure online payment",
+                            "title": "One-time or recurring donations",
                             "available": true
                         },
                         {
                             "id": 3,
-                            "title": "Tax-deductible receipt",
+                            "title": "Instant confirmation receipt",
                             "available": true
                         },
                         {
                             "id": 4,
-                            "title": "Impact updates",
+                            "title": "Direct impact on community programs",
+                            "available": true
+                        },
+                        {
+                            "id": 5,
+                            "title": "Support digital training initiatives",
                             "available": true
                         }
                     ],
-                    "donation_form": {
-                        "amounts": ["£10", "£25", "£50", "£100", "Custom"],
-                        "frequency": ["One-time", "Monthly"],
-                        "fields": ["Full Name", "Email", "Phone", "Message"]
-                    },
                     "orderLink": "https://donate.stripe.com/9B6fZibUj95g9CpdZp5Rm00",
-                    "button_text": "Donate Now"
+                    "button_text": "Donate Securely with Stripe"
                 },
                 {
                     "id": "material-donation",

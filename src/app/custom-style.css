@@ -174,6 +174,71 @@
     outline-offset: 2px;
 }
 
+/* Donation Section Redesign */
+.rn-pricing-area .pricing-table-inner .pricing-table.featured {
+    transform: scale(1.05);
+    border: 3px solid #ff014f;
+    box-shadow: 0 10px 30px rgba(255, 1, 79, 0.2);
+}
+
+.rn-pricing-area .pricing-table .pricing-header .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff014f;
+    margin-bottom: 0.5rem;
+}
+
+.rn-pricing-area .pricing-table .pricing-header .subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.rn-pricing-area .pricing-table .pricing-body .btn-default {
+    background: linear-gradient(135deg, #ff014f 0%, #e0013d 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 1, 79, 0.3);
+}
+
+.rn-pricing-area .pricing-table .pricing-body .btn-default:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 1, 79, 0.4);
+    background: linear-gradient(135deg, #e0013d 0%, #c0012f 100%);
+}
+
+.rn-pricing-area .pricing-table .pricing-body .list-style--1 li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+    color: #495057;
+}
+
+.rn-pricing-area .pricing-table .pricing-body .list-style--1 li:last-child {
+    border-bottom: none;
+}
+
+.rn-pricing-area .pricing-table .pricing-body .list-style--1 li::before {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.rn-pricing-area .pricing-table .pricing-header .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff014f;
+    margin: 1rem 0;
+}
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
     .cookie-content {
@@ -184,5 +249,15 @@
     .contact-form {
         padding: 1rem;
         margin: 1rem;
+    }
+    
+    .rn-pricing-area .pricing-table-inner .pricing-table.featured {
+        transform: none;
+        margin-bottom: 2rem;
+    }
+    
+    .rn-pricing-area .pricing-table .pricing-body .btn-default {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
     }
 }
