@@ -199,8 +199,8 @@
             "buttons": [
                 {
                     "id": 1,
-                    "path": "#contacts",
-                    "content": "CONTACT ME"
+                    "path": "https://calendar.app.google/6cNsajkPFi7R8hiE6",
+                    "content": "BOOK CONSULTATION"
                 }
             ]
         },
